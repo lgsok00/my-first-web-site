@@ -15,33 +15,39 @@
   <title>WEB1 - JavaScript</title>
   <meta charset="utf-8">
   <script>
-    function nightDayHandler(self) {
+    function LinksSetColor(color) {
+      var alist = document.querySelectorAll('a');
+      var i = 0;
+      while (i < alist.length) {
+        console.log(alist[i]);
+        alist[i].style.color = color;
+        i = i + 1;
+      }
+    }
+
+    function BodySetColor(color) {
+      document.querySelector('body').style.color = color;
+    }
+
+    function BodySetBackgroundColor(color) {
+      document.querySelector('body').style.backgroundColor = color;
+    }
+
+    function NightDayHandler(self) {
       var target = document.querySelector('body');
       if (self.value === 'night') {
-        target.style.backgroundColor = 'black';
-        target.style.color = 'white';
+        Body.SetBackgroundColor('black');
+        Body.SetColor('white');
         self.value = 'day';
 
-        var alist = document.querySelectorAll('a');
-        var i = 0;
-        while (i < alist.length) {
-          console.log(alist[i]);
-          alist[i].style.color = 'powderblue';
-          i = i + 1;
-        }
+        Links.SetColor('powderblue');
 
       } else {
-        target.style.backgroundColor = 'white';
-        target.style.color = 'black';
+        Body.SetBackgroundColor('white');
+        Body.SetColor('black');
         self.value = 'night';
 
-        var alist = document.querySelectorAll('a');
-        var i = 0;
-        while (i < alist.length) {
-          console.log(alist[i]);
-          alist[i].style.color = 'blue';
-          i = i + 1;
-        }
+        Links.SetColor('blue');
       }
     }
   </script>
@@ -50,7 +56,7 @@
 <body>
   <h1><a href="index.html">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
-    nightDayHandler(this);
+    NightDayHandler(this);
   ">
 
   <ol>
